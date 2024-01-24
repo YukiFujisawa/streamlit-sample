@@ -14,7 +14,7 @@ USERS_URL = api_url + "users"
 ROOMS_URL = api_url + "rooms"
 BOOKINGS_URL = api_url + "bookings"
 
-page = st.sidebar.selectbox("メニュー", ["ユーザー", "会議室", "予約"])
+page = st.sidebar.selectbox("リソース", ["ユーザー", "会議室", "予約"])
 
 
 def display_users():
@@ -74,6 +74,8 @@ def display_rooms():
 
 def display_bookings():
     st.title("予約")
+
+    st.write("## 一覧")
 
     res = requests.get(BOOKINGS_URL)
     st.write(res.json())
