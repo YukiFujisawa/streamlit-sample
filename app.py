@@ -20,6 +20,13 @@ page = st.sidebar.selectbox("メニュー", ["ユーザー", "会議室", "予�
 def display_users():
     st.title("ユーザー")
 
+    st.write("## 一覧")
+
+    res = requests.get(USERS_URL)
+    st.write(res.json())
+
+    st.write("## 登録")
+
     with st.form(key="user_form"):
         user_id: int = random.randint(1, 100)
         user_name: str = st.text_input("ユーザー名", max_chars=12)
@@ -41,6 +48,13 @@ def display_users():
 def display_rooms():
     st.title("会議室")
 
+    st.write("## 一覧")
+
+    res = requests.get(ROOMS_URL)
+    st.write(res.json())
+
+    st.write("## 登録")
+
     with st.form(key="booing_form"):
         room_id: int = random.randint(1, 100)
         room_name: str = st.text_input("会議室名", max_chars=12)
@@ -60,6 +74,11 @@ def display_rooms():
 
 def display_bookings():
     st.title("予約")
+
+    res = requests.get(BOOKINGS_URL)
+    st.write(res.json())
+
+    st.write("## 登録")
 
     with st.form(key="user_form"):
         booking_id: int = random.randint(1, 100)
