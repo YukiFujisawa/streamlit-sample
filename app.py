@@ -2,13 +2,17 @@ import streamlit as st
 import random
 import requests
 import json
-import uuid
+import os
 import datetime
 
-API_URL = "http://localhost:8000/"
-USERS_URL = API_URL + "users"
-ROOMS_URL = API_URL + "rooms"
-BOOKINGS_URL = API_URL + "bookings"
+# API_URL = "http://localhost:8000/"
+
+api_url = os.environ.get("API_URL")
+if api_url is None:
+    api_url = "http://localhost:8000/"
+USERS_URL = api_url + "users"
+ROOMS_URL = api_url + "rooms"
+BOOKINGS_URL = api_url + "bookings"
 
 page = st.sidebar.selectbox("メニュー", ["ユーザー", "会議室", "予約"])
 
